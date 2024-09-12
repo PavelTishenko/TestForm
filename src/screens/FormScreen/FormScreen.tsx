@@ -67,7 +67,7 @@ const TestForm = () => {
             <Animated.View
               style={[styles.dot, animatedStyle3]}
               entering={FadeIn.delay(800)}>
-              <SvgXml xml={BlueIcon} />
+              <SvgXml xml={OuterIcon} />
             </Animated.View>
             <Animated.View
               style={[styles.dot, animatedStyle4]}
