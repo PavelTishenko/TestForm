@@ -1,21 +1,6 @@
 const MOCK_API_DELAY = 2000;
 
 const mockService = {
-  getData: async () => {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve({
-          success: true,
-          data: {
-            id: 1,
-            name: 'Sample Data',
-            description: 'This is a mock response',
-          },
-        });
-      }, MOCK_API_DELAY);
-    });
-  },
-
   postData: async payload => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {

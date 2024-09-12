@@ -4,10 +4,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { SvgXml } from 'react-native-svg';
 
-import Form from '@/components/Form';
-import { BlueIcon, GreenIcon, OuterIcon, PurpleIcon } from '@/assets/svgs';
-
 import useFormScreen from './FormScreen.hook';
+
+import Form from '@/components/Form';
+import { BlueIcon, OuterIcon } from '@/assets/svgs';
 import { fontFamilies } from '@/constants/fonts';
 import { colors } from '@/constants/colors';
 
@@ -63,12 +63,12 @@ const TestForm = () => {
             <Animated.View
               style={[styles.dot, animatedStyle3]}
               entering={FadeIn.delay(800)}>
-              <SvgXml xml={GreenIcon} />
+              <SvgXml xml={BlueIcon} />
             </Animated.View>
             <Animated.View
-              style={[styles.dot, animatedStyle4, { zIndex: -1 }]}
+              style={[styles.dot, animatedStyle4]}
               entering={FadeIn.delay(900)}>
-              <SvgXml xml={PurpleIcon} />
+              <SvgXml xml={BlueIcon} />
             </Animated.View>
           </View>
         </View>
@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 1,
   },
   innerCircle: {
     width: 150,
@@ -134,6 +135,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 55,
     elevation: 12,
+    zIndex: -3,
   },
   innerCircleTwo: {
     width: 240,
@@ -159,6 +161,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderRadius: 10,
     transform: [{ rotate: '-10deg' }],
+    zIndex: 2,
   },
   dot: {
     position: 'absolute',

@@ -1,9 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { useLoginForm } from './Form.hook';
-import LinearGradient from 'react-native-linear-gradient';
-import FormItem from '../FormItem';
 import { ActivityIndicator, TextInput } from 'react-native-paper';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
+import { useLoginForm } from './Form.hook';
+import FormItem from '../FormItem';
+
 import { fontFamilies } from '@/constants/fonts';
 import { colors } from '@/constants/colors';
 
@@ -51,7 +53,7 @@ const Form = () => {
         <LinearGradient
           colors={[colors.lightBlue, colors.lightBlue, colors.blue]}
           style={[StyleSheet.absoluteFillObject, styles.linearGradient]}>
-          <Text style={styles.buttonText}>Apply</Text>
+          {!isLoading && <Text style={styles.buttonText}>Apply</Text>}
           {isLoading && <ActivityIndicator color={colors.white} />}
         </LinearGradient>
       </TouchableOpacity>

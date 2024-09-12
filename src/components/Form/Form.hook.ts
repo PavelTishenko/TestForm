@@ -3,7 +3,6 @@ import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import mockService from '@/services/mockResponseService';
 import { useAppDispatch } from '@/store/store';
 import { authorize } from '@/store/reducers/authSlice';
 import {
@@ -51,8 +50,6 @@ export const useLoginForm = () => {
       setIsLoading(true);
       const response = await dispatch(authorize(formData));
       if (authorize.fulfilled.match(response)) {
-        console.log(response);
-        //TODO: navigate to the next screen
         setIsLoading(false);
         navigation.navigate(Screens.RESULT);
       }
