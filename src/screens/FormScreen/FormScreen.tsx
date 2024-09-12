@@ -1,5 +1,11 @@
 import React, { memo } from 'react';
-import { View, Text, StyleSheet, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Platform,
+  KeyboardAvoidingView,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { SvgXml } from 'react-native-svg';
@@ -11,6 +17,7 @@ import Form from '@/components/Form';
 import { BlueIcon, OuterIcon } from '@/assets/svgs';
 import { fontFamilies } from '@/constants/fonts';
 import { colors } from '@/constants/colors';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const TestForm = () => {
   const {
@@ -22,65 +29,71 @@ const TestForm = () => {
   } = useFormScreen();
   return (
     <View style={styles.container}>
-      <View style={{ marginTop: top }}>
-        <Text style={styles.title}>TEST FORM</Text>
-        <Text style={styles.subtitle}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </Text>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1 }}>
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+          <View style={{ marginTop: top }}>
+            <Text style={styles.title}>TEST FORM</Text>
+            <Text style={styles.subtitle}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </Text>
 
-        <View style={styles.circleContainer}>
-          <View style={styles.outerCircle}>
-            <View style={styles.innerCircleTwo}>
-              <View style={styles.innerCircle}>
-                <View style={styles.rectangle}>
-                  <LinearGradient
-                    start={{ x: 1, y: 1.3 }}
-                    end={{ x: 0, y: 0 }}
-                    locations={[0, 0.4, 0.5, 0.7, 0.8, 1]}
-                    colors={[
-                      colors.greenGradient,
-                      colors.goldGradient,
-                      colors.goldGradient,
-                      colors.goldGradient,
-                      colors.goldGradient,
-                      colors.greenGradient,
-                    ]}
-                    style={[
-                      StyleSheet.absoluteFillObject,
-                      { borderRadius: 10 },
-                    ]}
-                  />
+            <View style={styles.circleContainer}>
+              <View style={styles.outerCircle}>
+                <View style={styles.innerCircleTwo}>
+                  <View style={styles.innerCircle}>
+                    <View style={styles.rectangle}>
+                      <LinearGradient
+                        start={{ x: 1, y: 1.3 }}
+                        end={{ x: 0, y: 0 }}
+                        locations={[0, 0.4, 0.5, 0.7, 0.8, 1]}
+                        colors={[
+                          colors.greenGradient,
+                          colors.goldGradient,
+                          colors.goldGradient,
+                          colors.goldGradient,
+                          colors.goldGradient,
+                          colors.greenGradient,
+                        ]}
+                        style={[
+                          StyleSheet.absoluteFillObject,
+                          { borderRadius: 10 },
+                        ]}
+                      />
+                    </View>
+                  </View>
                 </View>
+                <Animated.View
+                  style={[styles.dot, animatedStyle1]}
+                  entering={FadeIn.delay(500)}>
+                  <SvgXml xml={OuterIcon} />
+                </Animated.View>
+                <Animated.View
+                  style={[styles.dot, animatedStyle2]}
+                  entering={FadeIn.delay(700)}>
+                  <SvgXml xml={BlueIcon} />
+                </Animated.View>
+                <Animated.View
+                  style={[styles.dot, animatedStyle3]}
+                  entering={FadeIn.delay(800)}>
+                  <SvgXml xml={OuterIcon} />
+                </Animated.View>
+                <Animated.View
+                  style={[styles.dot, animatedStyle4, { zIndex: -1 }]}
+                  entering={FadeIn.delay(900)}>
+                  <SvgXml xml={BlueIcon} />
+                </Animated.View>
               </View>
             </View>
-            <Animated.View
-              style={[styles.dot, animatedStyle1]}
-              entering={FadeIn.delay(500)}>
-              <SvgXml xml={OuterIcon} />
-            </Animated.View>
-            <Animated.View
-              style={[styles.dot, animatedStyle2]}
-              entering={FadeIn.delay(700)}>
-              <SvgXml xml={BlueIcon} />
-            </Animated.View>
-            <Animated.View
-              style={[styles.dot, animatedStyle3]}
-              entering={FadeIn.delay(800)}>
-              <SvgXml xml={OuterIcon} />
-            </Animated.View>
-            <Animated.View
-              style={[styles.dot, animatedStyle4, { zIndex: -1 }]}
-              entering={FadeIn.delay(900)}>
-              <SvgXml xml={BlueIcon} />
-            </Animated.View>
-          </View>
-        </View>
 
-        <View style={{ marginHorizontal: 12 }}>
-          <Form />
-        </View>
-      </View>
+            <View style={{ marginHorizontal: 12 }}>
+              <Form />
+            </View>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </View>
   );
 };
@@ -92,7 +105,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     borderRadius: 10,
   },
-
+  scrollViewContent: {
+    flexGrow: 1,
+  },
   title: {
     fontFamily: fontFamilies.MONTSERRAT.bold,
     fontSize: 48,

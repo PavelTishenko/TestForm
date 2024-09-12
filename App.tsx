@@ -6,18 +6,21 @@ import {
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { store } from '@/store/store';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <Provider store={store}>
-        <PaperProvider>
-          <RootNavigator />
-        </PaperProvider>
-      </Provider>
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <Provider store={store}>
+          <PaperProvider>
+            <RootNavigator />
+          </PaperProvider>
+        </Provider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
 

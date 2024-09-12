@@ -31,32 +31,34 @@ const Form = () => {
           />
         )}
       />
-      <FormItem
-        name="name"
-        control={control}
-        render={({ field, fieldState }) => (
-          <TextInput
-            {...field}
-            style={styles.input}
-            onBlur={field.onBlur}
-            onChangeText={field.onChange}
-            contentStyle={{ fontFamily: fontFamilies.MONTSERRAT.normal }}
-            placeholder="Name"
-            mode="outlined"
-            outlineStyle={styles.input}
-            placeholderTextColor={colors.placeholder}
-            error={!!fieldState.error}
-          />
-        )}
-      />
-      <TouchableOpacity style={styles.button} onPress={handleApplyPress}>
-        <LinearGradient
-          colors={[colors.lightBlue, colors.lightBlue, colors.blue]}
-          style={[StyleSheet.absoluteFillObject, styles.linearGradient]}>
-          {!isLoading && <Text style={styles.buttonText}>Apply</Text>}
-          {isLoading && <ActivityIndicator color={colors.white} />}
-        </LinearGradient>
-      </TouchableOpacity>
+      <View>
+        <FormItem
+          name="name"
+          control={control}
+          render={({ field, fieldState }) => (
+            <TextInput
+              {...field}
+              style={styles.input}
+              onBlur={field.onBlur}
+              onChangeText={field.onChange}
+              contentStyle={{ fontFamily: fontFamilies.MONTSERRAT.normal }}
+              placeholder="Name"
+              mode="outlined"
+              outlineStyle={styles.input}
+              placeholderTextColor={colors.placeholder}
+              error={!!fieldState.error}
+            />
+          )}
+        />
+        <TouchableOpacity style={styles.button} onPress={handleApplyPress}>
+          <LinearGradient
+            colors={[colors.lightBlue, colors.lightBlue, colors.blue]}
+            style={[StyleSheet.absoluteFillObject, styles.linearGradient]}>
+            {!isLoading && <Text style={styles.buttonText}>Apply</Text>}
+            {isLoading && <ActivityIndicator color={colors.white} />}
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
