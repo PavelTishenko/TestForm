@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:make-apk": "cd android && ./gradlew clean && ./gradlew assembleRelease && mv ./app/build/outputs/apk/release/app-release.apk ~/Desktop/TestForm.apk",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",

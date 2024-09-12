@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { SvgXml } from 'react-native-svg';
@@ -138,7 +138,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 55,
-    elevation: 12,
     zIndex: -3,
   },
   innerCircleTwo: {
@@ -156,7 +155,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 55,
-    elevation: 12,
   },
   rectangle: {
     width: 168,
@@ -166,6 +164,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     transform: [{ rotate: '-10deg' }],
     zIndex: 2,
+    ...Platform.select({
+      ios: null,
+      android: {
+        elevation: 12,
+        shadowColor: colors.shadow,
+      },
+    }),
   },
   dot: {
     position: 'absolute',
