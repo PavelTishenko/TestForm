@@ -45,7 +45,10 @@ const TestForm = () => {
                       colors.goldGradient,
                       colors.greenGradient,
                     ]}
-                    style={StyleSheet.absoluteFillObject}
+                    style={[
+                      StyleSheet.absoluteFillObject,
+                      { borderRadius: 10 },
+                    ]}
                   />
                 </View>
               </View>
