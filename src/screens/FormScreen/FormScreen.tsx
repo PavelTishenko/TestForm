@@ -7,6 +7,7 @@ import { SvgXml } from 'react-native-svg';
 import useFormScreen from './FormScreen.hook';
 
 import Form from '@/components/Form';
+// important: use only this two icon because data/code of other two was beated, tried to download several times
 import { BlueIcon, OuterIcon } from '@/assets/svgs';
 import { fontFamilies } from '@/constants/fonts';
 import { colors } from '@/constants/colors';
